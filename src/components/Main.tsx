@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ScrollContainer from "react-indiana-drag-scroll";
+
 import Gnb from "@/components/Gnb";
 
 const IMAGE_SERVER = "https://image.khanteum.com";
@@ -48,15 +50,30 @@ const Main = () => {
     <>
       <Gnb />
       <div className="container">
-        {videoList.map((video: IVideo, idx: number) => (
-          <VideoThumbnail
-            key={idx}
-            thumbnail={video.thumbnail}
-          ></VideoThumbnail>
-        ))}
+        <ScrollContainer
+          className="ScrollContainer horizontal"
+          horizontal={true}
+          nativeMobileScroll
+        >
+          {videoList.map((video: IVideo, idx: number) => (
+            <VideoThumbnail
+              key={idx}
+              thumbnail={video.thumbnail}
+            ></VideoThumbnail>
+          ))}
+        </ScrollContainer>
         <style jsx>{`
           .container {
             max-width: 517.5px;
+          }
+        `}</style>
+        <style jsx global>{`
+          .ScrollContainer.horizontal {
+            overflow-y: hidden;
+            overflow-x: auto;
+            white-space: nowrap;
+            font-size: 0;
+            padding-bottom: 15px;
           }
         `}</style>
       </div>

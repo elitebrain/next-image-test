@@ -32,12 +32,12 @@ const Gnb = () => {
           width: 100px;
           line-height: 40px;
           text-align: center;
-          border-bottom: 2px solid #ddd;
-          color: #ddd;
+          border-bottom: 2px solid #bbb;
+          color: #bbb;
         }
         .link-item.active {
-          border-color: #000;
-          color: #000;
+          border-color: #fff;
+          color: #fff;
         }
       `}</style>
     </div>
