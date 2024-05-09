@@ -23,17 +23,26 @@ const Gnb = () => {
           NextImage
         </span>
       </Link>
+      <Link href="/next-image-indiana">
+        <span
+          className={`link-item${
+            router.pathname === "/next-image-indiana" ? " active" : ""
+          }`}
+        >
+          NextImageIndiana
+        </span>
+      </Link>
       <style jsx>{`
         .container {
           margin: 30px auto;
         }
         .link-item {
           display: inline-block;
-          width: 100px;
           line-height: 40px;
           text-align: center;
           border-bottom: 2px solid #bbb;
           color: #bbb;
+          padding-inline: 12px;
         }
         .link-item.active {
           border-color: #fff;

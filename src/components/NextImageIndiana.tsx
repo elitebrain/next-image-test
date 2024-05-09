@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Image from "next/image";
-import Gnb from "@/components/Gnb";
+import ScrollContainer from "react-indiana-drag-scroll";
+
 import {
   CLOUDFRONT_VOD_DESTINATION_PREFIX,
   IMAGE_SERVER,
   IVideo,
 } from "@/components/Main";
+import Gnb from "@/components/Gnb";
+import { VideoThumbnail } from "@/components/NextImage";
 
-export const VideoThumbnail = ({ thumbnail }: { thumbnail: string }) => {
-  return (
-    <Image
-      src={`${IMAGE_SERVER}?file=${CLOUDFRONT_VOD_DESTINATION_PREFIX}/${thumbnail}&size=304x420`}
-      width={152.5}
-      height={210}
-      style={{ margin: "10px", borderRadius: "8px" }}
-      alt={`dreamer_${thumbnail}`}
-    />
-  );
-};
-
-const NextImage = () => {
+const NextImageIndiana = () => {
   const [videoList, setVideoList] = useState([]);
 
   const getVideoList = async () => {
@@ -38,12 +28,18 @@ const NextImage = () => {
     <div className="main">
       <Gnb />
       <div className="container">
-        {videoList.map((video: IVideo, idx: number) => (
-          <VideoThumbnail
-            key={idx}
-            thumbnail={video.thumbnail}
-          ></VideoThumbnail>
-        ))}
+        <ScrollContainer
+          className="ScrollContainer horizontal"
+          horizontal={true}
+          nativeMobileScroll
+        >
+          {videoList.map((video: IVideo, idx: number) => (
+            <VideoThumbnail
+              key={idx}
+              thumbnail={video.thumbnail}
+            ></VideoThumbnail>
+          ))}
+        </ScrollContainer>
       </div>
       <style jsx>{`
         .main {
@@ -61,4 +57,4 @@ const NextImage = () => {
   );
 };
 
-export default NextImage;
+export default NextImageIndiana;

@@ -4,8 +4,8 @@ import ScrollContainer from "react-indiana-drag-scroll";
 
 import Gnb from "@/components/Gnb";
 
-const IMAGE_SERVER = "https://image.khanteum.com";
-const CLOUDFRONT_VOD_DESTINATION_PREFIX =
+export const IMAGE_SERVER = "https://image.khanteum.com";
+export const CLOUDFRONT_VOD_DESTINATION_PREFIX =
   "https://d3oh3emdg2ecln.cloudfront.net";
 
 export interface IVideo {
@@ -24,6 +24,7 @@ const VideoThumbnail = ({ thumbnail }: { thumbnail: string }) => {
           margin: 10px;
           width: 152.5px;
           height: 210px;
+          border-radius: 8px;
           background: center / cover
             url(${IMAGE_SERVER}?file=${CLOUDFRONT_VOD_DESTINATION_PREFIX}/${thumbnail}&size=304x420);
         }
@@ -65,15 +66,6 @@ const Main = () => {
         <style jsx>{`
           .container {
             max-width: 517.5px;
-          }
-        `}</style>
-        <style jsx global>{`
-          .ScrollContainer.horizontal {
-            overflow-y: hidden;
-            overflow-x: auto;
-            white-space: nowrap;
-            font-size: 0;
-            padding-bottom: 15px;
           }
         `}</style>
       </div>

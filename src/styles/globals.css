@@ -95,6 +95,14 @@ a {
   text-decoration: none;
 }
 
+.ScrollContainer.horizontal {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-size: 0;
+  padding-bottom: 15px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
